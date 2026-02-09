@@ -19,10 +19,16 @@ function createGrid() {
     for (let i = 0; i < totalSquares; i++) {
         const square = document.createElement('div');
         square.classList.add('square');
+        square.addEventListener('mouseover', paint);
         container.appendChild(square);
+        
     }
 }
 
 
 createGrid();
+
+function paint(e) {
+  e.target.style.backgroundColor = 'black'; // Change to desired color
+}
 
