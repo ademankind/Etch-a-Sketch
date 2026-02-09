@@ -1,0 +1,15 @@
+#grid-container {
+display: grid;
+grid-template-columns: repeat(16, 1fr);
+grid-template-rows: repeat(16,1fr);
+width: 800px;
+height: 800px;
+border: 2px solid black;
+box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.grid-item {
+    border: 1px solid #050505;
+    box-sizing: border-box;
+    aspect-ratio: 1 / 1;
+}
