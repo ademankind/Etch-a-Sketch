@@ -1,6 +1,7 @@
    const container = document.getElementById("grid-container");
     const input = document.getElementById("gridSizeInput");
     const resetBtn = document.getElementById("resetBtn");
+     const resizeBtn = document.getElementById("resizeBtn");
 
     let currentSize = 16;
 
@@ -41,22 +42,18 @@
       });
     });
 
-    // Update grid when input changes
-    input.addEventListener("change", (e) => {
-      createGrid(e.target.value);
+    //Resize Grid with button
+    resizeBtn.addEventListener("click", () => {
+       let size = prompt("Enter new grid size (e.g., 10 for 10x10):", "10");
+
+    if (size > 100) {
+      alert("Max number of Grids is 100");
+      return;
+    }  
+    if (size === null || size === "") return; // Cancelled 
+
+    createGrid(size);
     });
     
- // ResizeObserver to ensure proper layout recalculation
-    const resizeObserver = new ResizeObserver(() => {
-      // Force reflow recalculation for precision resizing
-      const squares = document.querySelectorAll(".square");
-      const squarePercent = 100 / currentSize;
-      squares.forEach(sq => {
-        sq.style.flex = `0 0 ${squarePercent}%`;
-      });
-    });
-
-    resizeObserver.observe(container);
-
     // Initialize default grid
     createGrid(16);
